@@ -1,10 +1,11 @@
+import os
 import sqlite3
 from pathlib import Path
 
 from flask import Flask, g, redirect, render_template, request, url_for
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_PATH = BASE_DIR / "todo.db"
+DB_PATH = Path("/tmp/todo.db") if os.environ.get("VERCEL") else BASE_DIR / "todo.db"
 
 app = Flask(__name__)
 
@@ -74,6 +75,7 @@ def delete(todo_id):
     return redirect(url_for("index"))
 
 
+init_db()
+
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
