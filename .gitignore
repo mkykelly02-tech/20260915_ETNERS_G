@@ -3,3 +3,7 @@ __pycache__/
 todo.db
 .venv/
 venv/
+
+.vercel
+.env*
+supabase/.temp/
