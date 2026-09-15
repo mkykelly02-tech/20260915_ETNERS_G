@@ -3,8 +3,11 @@ from functools import wraps
 
 import psycopg2
 import psycopg2.extras
+from dotenv import load_dotenv
 from flask import Flask, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
+
+load_dotenv()
 
 DATABASE_URL = os.environ["DATABASE_URL"]
 
